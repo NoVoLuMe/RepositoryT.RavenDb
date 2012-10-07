@@ -23,7 +23,7 @@ namespace RepoT.RavenDb
         }
 
         /// <summary>
-        /// Abtract method for update operations
+        /// Abstract method for update operation
         /// </summary>
         /// <param name="entity"></param>
         public abstract void Update(T entity);

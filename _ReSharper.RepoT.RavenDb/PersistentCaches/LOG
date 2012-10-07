@@ -1,1 +1,5 @@
-2012/10/07-04:00:47.071 20b4 Delete type=3 #1
+2012/10/07-04:14:13.384 2a2c Recovering log #3
+2012/10/07-04:14:13.384 2a2c Level-0 table #5: started
+2012/10/07-04:14:13.439 2a2c Level-0 table #5: 5350 bytes OK
+2012/10/07-04:14:13.536 2a2c Delete type=0 #3
+2012/10/07-04:14:13.537 2a2c Delete type=3 #2

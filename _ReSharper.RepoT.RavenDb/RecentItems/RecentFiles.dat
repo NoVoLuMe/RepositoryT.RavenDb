@@ -3,6 +3,12 @@
     <File id="D0D87FA6-D1AD-4444-A0F5-8B32B2508CF3/f:packages.config" caret="0" fromTop="0" />
     <File id="D0D87FA6-D1AD-4444-A0F5-8B32B2508CF3/f:UnitOfWork.cs" caret="0" fromTop="0" />
     <File id="D0D87FA6-D1AD-4444-A0F5-8B32B2508CF3/f:EntityRepository.cs" caret="185" fromTop="6" />
+    <File id="79AF5BCB-A92B-4397-8CB1-EC779ED576CB/f:Program.cs" caret="0" fromTop="0" />
+    <File id="79AF5BCB-A92B-4397-8CB1-EC779ED576CB/f:User.cs" caret="0" fromTop="0" />
+    <File id="79AF5BCB-A92B-4397-8CB1-EC779ED576CB/f:IUserRepository.cs" caret="0" fromTop="0" />
+    <File id="79AF5BCB-A92B-4397-8CB1-EC779ED576CB/f:UserEntityRepository.cs" caret="404" fromTop="16" />
   </RecentFiles>
-  <RecentEdits />
+  <RecentEdits>
+    <File id="79AF5BCB-A92B-4397-8CB1-EC779ED576CB/f:UserEntityRepository.cs" caret="0" fromTop="0" />
+  </RecentEdits>
 </RecentFiles>

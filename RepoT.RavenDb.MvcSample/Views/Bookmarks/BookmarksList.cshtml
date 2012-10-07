@@ -1,0 +1,20 @@
+﻿@model IEnumerable<RepoT.RavenDb.MvcSample.Models.Bookmark>
+<ul class="Bookmarks">
+@foreach (var item in Model)
+{
+    <li>
+        <div class="Title"><a href="@item.Url">@item.Title</a></div>
+        <div class="Url"><a href="@item.Url">@item.Url</a></div>
+        <div class="DateCreated">Created on @item.DateCreated.ToShortDateString()</div>
+        <ul class="Tags">
+            @foreach (var tag in item.Tags)
+            { <li>@Html.ActionLink(tag, "Tag", new { controller = "Bookmarks", tag })</li>}
+        </ul>
+        <ul class="Actions">
+            <li>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+            <li>@Html.ActionLink("Details", "Details", new { id = item.Id })</li>
+            <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+        </ul>
+    </li>
+}
+</ul>

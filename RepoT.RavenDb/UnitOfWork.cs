@@ -5,8 +5,8 @@ namespace RepoT.RavenDb
 {
     public class UnitOfWork : UnitOfWorkBase<IDocumentSession>
     {
-        public UnitOfWork(IDatabaseFactory<IDocumentSession> databaseFactory)
-            : base(databaseFactory)
+        public UnitOfWork(IDataContextFactory<IDocumentSession> dataContextFactory)
+            : base(dataContextFactory)
         {
         }
 

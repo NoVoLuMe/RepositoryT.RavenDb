@@ -1,0 +1,8 @@
+﻿@model RepoT.RavenDb.MvcSample.Models.BookmarksByTagViewModel
+@{ ViewBag.Title = "Tag"; }
+
+<h2>With tag @Model.Tag</h2>
+<p>
+    @Html.ActionLink("Full List", "Index")
+</p>
+@{Html.RenderPartial("BookmarksList", Model.Bookmarks);}

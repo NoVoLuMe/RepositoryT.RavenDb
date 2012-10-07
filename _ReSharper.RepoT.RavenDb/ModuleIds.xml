@@ -1,4 +1,0 @@
-<Modules>
-  <Module PersistentId="D0D87FA6-D1AD-4444-A0F5-8B32B2508CF3" ModuleId="RepoT.RavenDb" />
-  <Module PersistentId="79AF5BCB-A92B-4397-8CB1-EC779ED576CB" ModuleId="RepoT.RavenDb.ConsoleSample" />
-</Modules>

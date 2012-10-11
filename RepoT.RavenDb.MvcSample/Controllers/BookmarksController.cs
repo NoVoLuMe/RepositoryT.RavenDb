@@ -14,7 +14,7 @@ namespace RepoT.RavenDb.MvcSample.Controllers
         public BookmarksController()
         {
             _bookmarkRepository = new BookmarkRepository(new RavenSessionFactory());
-            _bookmarkService = new BookmarkService(_bookmarkRepository, new UnitOfWork(new RavenSessionFactory()));
+            _bookmarkService = new BookmarkService(_bookmarkRepository);
         }
 
         public ViewResult Index()
@@ -39,7 +39,7 @@ namespace RepoT.RavenDb.MvcSample.Controllers
         public ActionResult Create(Bookmark bookmark)
         {
             bookmark.DateCreated = DateTime.UtcNow;
-            bool add = _bookmarkService.Add(bookmark, CommitMode.Repository);
+            bool add = _bookmarkService.Add(bookmark);
             return RedirectToAction("Index");
         }
 
@@ -52,7 +52,7 @@ namespace RepoT.RavenDb.MvcSample.Controllers
         [HttpPost]
         public ActionResult Edit(Bookmark bookmark)
         {
-            _bookmarkService.Add(bookmark, CommitMode.Repository);
+            _bookmarkService.Add(bookmark);
             return RedirectToAction("Index");
         }
 

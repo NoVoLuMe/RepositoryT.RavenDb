@@ -11,8 +11,6 @@ namespace RepoT.RavenDb.MvcSample.SampleBase
         {
             if (filterContext.IsChildAction)
                 return;
-            //DocumentSession = DataDocumentStore.Instance.OpenSession();
-            //DocumentSession = GetSession();
             base.OnActionExecuting(filterContext);
         }
 
@@ -25,10 +23,6 @@ namespace RepoT.RavenDb.MvcSample.SampleBase
         {
             if (filterContext.IsChildAction)
                 return;
-            //if (DocumentSession != null && filterContext.Exception == null)
-            //    DocumentSession.SaveChanges();
-            //IDocumentSession documentSession = DocumentSession;
-            //if (documentSession != null) documentSession.Dispose();
             base.OnActionExecuted(filterContext);
         }
     }

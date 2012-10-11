@@ -13,17 +13,15 @@ namespace RepoT.RavenDb.MvcSample.SampleBase
     {
         private const string CACHE_KEY = "Bookmark_Entitites";
         private readonly BookmarkRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
 
         private List<Bookmark> BookmarkCache
         {
             get { return (List<Bookmark>)HttpContext.Current.Cache.Get(CACHE_KEY); }
         }
 
-        public BookmarkService(BookmarkRepository repository, IUnitOfWork unitOfWork)
+        public BookmarkService(BookmarkRepository repository)
         {
             _repository = repository;
-            _unitOfWork = unitOfWork;
             if (HttpContext.Current.Cache[CACHE_KEY] == null)
                 CacheInit(_repository.GetAll().ToList());
         }
@@ -35,22 +33,9 @@ namespace RepoT.RavenDb.MvcSample.SampleBase
                 , Cache.NoSlidingExpiration);
         }
 
-        public bool Add(Bookmark entity, CommitMode commitMode)
+        public bool Add(Bookmark entity)
         {
-            bool result;
-            if (commitMode == CommitMode.Repository)
-            {
-                result = _repository.Add(entity, true);
-
-                if (result)
-                {
-                    _unitOfWork.Commit();
-                }
-            }
-            else
-            {
-                result = _repository.Add(entity);
-            }
+            bool result = _repository.Add(entity);
 
             if (result)
             {

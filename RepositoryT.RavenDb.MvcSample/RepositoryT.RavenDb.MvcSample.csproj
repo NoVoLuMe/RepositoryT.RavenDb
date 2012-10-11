@@ -107,11 +107,9 @@
     <Reference Include="Raven.Storage.Esent">
       <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\Raven.Storage.Esent.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Storage.Managed">
-      <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\Raven.Storage.Managed.dll</HintPath>
-    </Reference>
-    <Reference Include="RepositoryT">
-      <HintPath>..\TempLib\RepositoryT.dll</HintPath>
+    <Reference Include="RepositoryT, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RepositoryT.0.1.0\lib\RepositoryT.dll</HintPath>
     </Reference>
     <Reference Include="Spatial4n.Core">
       <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\Spatial4n.Core.dll</HintPath>
@@ -204,13 +202,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RepositoryT.RavenDb\RepositoryT.RavenDb.csproj">
-      <Project>{d0d87fa6-d1ad-4444-a0f5-8b32b2508cf3}</Project>
-      <Name>RepoT.RavenDb</Name>
-    </ProjectReference>
+    <None Include="Properties\PublishProfiles\repotRaven.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\repotRaven.pubxml" />
+    <ProjectReference Include="..\RepositoryT.RavenDb\RepositoryT.RavenDb.csproj">
+      <Project>{d0d87fa6-d1ad-4444-a0f5-8b32b2508cf3}</Project>
+      <Name>RepositoryT.RavenDb</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

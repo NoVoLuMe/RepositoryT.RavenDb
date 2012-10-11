@@ -1,4 +1,4 @@
-RepoT.RavenDb
+RepositoryT.RavenDb
 =============
 
-Generic Repository Pattern base with UnitOfWork for RavenDb
+Generic Repository Pattern and UnitOfWork implementation with base classes for RavenDb

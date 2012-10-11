@@ -1,0 +1,21 @@
+﻿@using Mvc3RavenDbEmbed.Models
+@using RepoT.RavenDb.MvcSample.Models
+@using RepositoryT.RavenDb.MvcSample.Models
+@model RepositoryT.RavenDb.MvcSample.Models.Bookmark
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<dl class="FieldsWithLabels">
+    <dt>@Html.LabelFor(model => model.Title)</dt><dd>@Model.Title</dd>
+    <dt>@Html.LabelFor(model => model.Url)</dt><dd>@Model.Url</dd>
+    <dt>@Html.LabelFor(model => model.Description)</dt><dd>@Model.Description</dd>
+    <dt>@Html.LabelFor(model => model.Tags)</dt><dd>@Model.Tags.ToCommaSeparatedString()</dd>
+</dl>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

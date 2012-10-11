@@ -13,6 +13,7 @@ namespace RepositoryT.RavenDb.MvcSample.Controllers
 
         public BookmarksController()
         {
+            //Todo: Use DI container for resolving dependencies :)
             _bookmarkRepository = new BookmarkRepository(new RavenSessionFactory());
             _bookmarkService = new BookmarkService(_bookmarkRepository);
         }
@@ -25,7 +26,7 @@ namespace RepositoryT.RavenDb.MvcSample.Controllers
 
         public ViewResult Details(string id)
         {
-            var model = DocumentSession.Load<Bookmark>(id);
+            var model = _bookmarkService.GetById(id);
             return View(model);
         }
 
@@ -71,10 +72,14 @@ namespace RepositoryT.RavenDb.MvcSample.Controllers
 
         public ViewResult Tag(string tag)
         {
-            var model = new BookmarksByTagViewModel { Tag = tag };
-            model.Bookmarks =
-                _bookmarkService.GetMany(item => item.Tags.Any(t => t == tag)).OrderByDescending(i => i.DateCreated).
-                    ToList();
+            var model = new BookmarksByTagViewModel
+                            {
+                                Tag = tag,
+                                Bookmarks =
+                                    _bookmarkService.GetMany(item => item.Tags.Any(t => t == tag)).OrderByDescending(
+                                        i => i.DateCreated).
+                                    ToList()
+                            };
             return View(model);
         }
     }

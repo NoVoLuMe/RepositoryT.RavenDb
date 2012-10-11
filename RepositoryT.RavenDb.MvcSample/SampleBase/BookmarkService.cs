@@ -56,6 +56,19 @@ namespace RepositoryT.RavenDb.MvcSample.SampleBase
         public void Delete(string id)
         {
             _repository.Delete(id);
+            DeleteFromCache(id);
+        }
+
+        private void DeleteFromCache(string id)
+        {
+            List<Bookmark> bookmarkCache = BookmarkCache;
+            Bookmark bookmarkToDelete = bookmarkCache.SingleOrDefault(item => item.Id.Equals(id));
+
+            if (bookmarkToDelete != null)
+            {
+                bookmarkCache.Remove(bookmarkToDelete);
+                CacheInit(bookmarkCache);
+            }
         }
 
         public void Delete(Expression<Func<Bookmark, bool>> @where)

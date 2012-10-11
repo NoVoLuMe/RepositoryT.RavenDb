@@ -2,6 +2,7 @@
 using System.Web.Routing;
 using RepoT.RavenDb.MvcSample.Controllers;
 using RepoT.RavenDb.MvcSample.Models;
+using RepoT.RavenDb.MvcSample.SampleBase;
 
 namespace RepoT.RavenDb.MvcSample
 {

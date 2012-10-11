@@ -142,27 +142,27 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BaseDocumentStoreController.cs" />
-    <Compile Include="Controllers\BookmarkRepository.cs" />
     <Compile Include="Controllers\BookmarksController.cs" />
-    <Compile Include="Controllers\BookmarkService.cs" />
-    <Compile Include="Controllers\CacheManager.cs" />
-    <Compile Include="Controllers\IServiceBase.cs" />
-    <Compile Include="Controllers\RavenSessionFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bookmark.cs" />
     <Compile Include="Models\BookmarkModelBinder.cs" />
     <Compile Include="Models\BookmarksByTagViewModel.cs" />
-    <Compile Include="Models\DataDocumentStore.cs" />
     <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleBase\BaseDocumentStoreController.cs" />
+    <Compile Include="SampleBase\BookmarkRepository.cs" />
+    <Compile Include="SampleBase\BookmarkService.cs" />
+    <Compile Include="SampleBase\CacheManager.cs" />
+    <Compile Include="SampleBase\IServiceBase.cs" />
+    <Compile Include="SampleBase\RavenSessionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Raven.Studio.xap" />
+    <Content Include="README.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -208,6 +208,9 @@
       <Project>{d0d87fa6-d1ad-4444-a0f5-8b32b2508cf3}</Project>
       <Name>RepoT.RavenDb</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\repotRaven.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

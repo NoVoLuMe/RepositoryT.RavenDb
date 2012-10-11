@@ -11,9 +11,10 @@ namespace RepoT.RavenDb.MvcSample.Models
             var form = controllerContext.HttpContext.Request.Form;
             var tagsAsString = form["TagsAsString"];
             var bookmark = bindingContext.Model as Bookmark;
-            bookmark.Tags = string.IsNullOrEmpty(tagsAsString)
-                    ? new List<string>()
-                    : tagsAsString.Split(',').Select(i => i.Trim()).ToList();
+            if (bookmark != null)
+                bookmark.Tags = string.IsNullOrEmpty(tagsAsString)
+                                    ? new List<string>()
+                                    : tagsAsString.Split(',').Select(i => i.Trim()).ToList();
         }
     }
 }

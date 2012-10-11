@@ -1,0 +1,1 @@
+﻿This sample project based following tutorial http://msdn.microsoft.com/en-us/magazine/hh547101.aspx

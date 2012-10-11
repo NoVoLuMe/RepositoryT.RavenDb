@@ -40,11 +40,10 @@ namespace RepoT.RavenDb
             return result;
         }
 
-        /// <summary>
-        /// Abstract method for update operation
-        /// </summary>
-        /// <param name="entity"></param>
-        public abstract void Update(T entity);
+        public virtual void Update(T entity)
+        {
+            DataContext.Store(entity);
+        }
 
         public virtual void Delete(T entity)
         {

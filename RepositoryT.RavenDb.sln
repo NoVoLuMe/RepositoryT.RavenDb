@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{692191
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryT.RavenDb.MvcSample", "RepositoryT.RavenDb.MvcSample\RepositoryT.RavenDb.MvcSample.csproj", "{9EA2EBB4-8A6F-4AF3-BD82-D3849A82D7A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryT.RavenDb.Mvc4AutofacSample", "RepositoryT.RavenDb.Mvc4AutofacSample\RepositoryT.RavenDb.Mvc4AutofacSample.csproj", "{9DBF05B7-03C2-43CA-990E-BC6DCD434A8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{9EA2EBB4-8A6F-4AF3-BD82-D3849A82D7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EA2EBB4-8A6F-4AF3-BD82-D3849A82D7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EA2EBB4-8A6F-4AF3-BD82-D3849A82D7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBF05B7-03C2-43CA-990E-BC6DCD434A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBF05B7-03C2-43CA-990E-BC6DCD434A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBF05B7-03C2-43CA-990E-BC6DCD434A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBF05B7-03C2-43CA-990E-BC6DCD434A8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

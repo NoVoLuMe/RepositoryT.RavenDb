@@ -40,7 +40,7 @@ namespace RepositoryT.RavenDb.MvcSample.Controllers
         public ActionResult Create(Bookmark bookmark)
         {
             bookmark.DateCreated = DateTime.UtcNow;
-            bool add = _bookmarkService.Add(bookmark);
+            _bookmarkService.Add(bookmark);
             return RedirectToAction("Index");
         }
 

@@ -27,15 +27,14 @@ namespace RepositoryT.RavenDb.MvcSample.SampleBase
 
         public static void Init()
         {
-            var instance = new EmbeddableDocumentStore
-                              {
-                                  ConnectionStringName = "RavenDB"
-                                      //,UseEmbeddedHttpServer = true
-                                  ,
-                                  Conventions = { IdentityPartsSeparator = "-" }
-                              };
-            instance.Initialize();
-            _store = instance;
+            _store = new EmbeddableDocumentStore
+                               {
+                                   ConnectionStringName = "RavenDB"
+                                       //,UseEmbeddedHttpServer = true
+                                   ,
+                                   Conventions = { IdentityPartsSeparator = "-" }
+                               };
+            _store.Initialize();
         }
 
         public static void DisposeSession()

@@ -1,0 +1,8 @@
+@model IEnumerable<RepositoryT.RavenDb.Mvc4AutofacSample.Models.Bookmark>
+@{ ViewBag.Title = "Index"; }
+
+<h2>All Bookmarks</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@{Html.RenderPartial("BookmarksList", Model);}

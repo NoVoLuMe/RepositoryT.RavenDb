@@ -1,0 +1,16 @@
+@model RepositoryT.RavenDb.Mvc4AutofacSample.Models.Bookmark
+@{ ViewBag.Title = "Details"; }
+
+<h2>Details</h2>
+<div class="Title"><a href="@Model.Url">@Model.Title</a></div>
+<div class="Url"><a href="@Model.Url">@Model.Url</a></div>
+<div class="DateCreated">Created on @Model.DateCreated.ToShortDateString()</div>
+<div class="Description">@Model.Description</div>
+<ul class="Tags">
+    @foreach (var tag in Model.Tags)
+    { <li>@Html.ActionLink(tag, "Tag", new { controller = "Bookmarks", tag })</li>}
+</ul>
+<ul class="Actions">
+    <li>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</li>
+    <li>@Html.ActionLink("Back to List", "Index")</li>
+</ul>

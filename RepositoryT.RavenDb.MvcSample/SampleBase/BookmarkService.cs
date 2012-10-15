@@ -32,15 +32,14 @@ namespace RepositoryT.RavenDb.MvcSample.SampleBase
                 , Cache.NoSlidingExpiration);
         }
 
-        public bool Add(Bookmark entity)
+        public void Add(Bookmark entity)
         {
-            bool result = _repository.Add(entity);
+            _repository.Add(entity);
 
-            if (result)
+            if (!string.IsNullOrEmpty(entity.Id))
             {
                 AddToCache(entity);
             }
-            return result;
         }
 
         public void Update(Bookmark entity)

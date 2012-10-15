@@ -1,0 +1,18 @@
+@using RepositoryT.RavenDb.Mvc4AutofacSample.Models
+@model Bookmark
+@{ ViewBag.Title = "Edit"; }
+
+<h2>Edit Bookmark</h2>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.DateCreated)
+    <dl class="FieldsWithLabels">
+        <dt>@Html.LabelFor(model => model.Title)</dt><dd>@Html.EditorFor(model => model.Title)</dd>
+        <dt>@Html.LabelFor(model => model.Url)</dt><dd>@Html.EditorFor(model => model.Url)</dd>
+        <dt>@Html.LabelFor(model => model.Description)</dt><dd>@Html.EditorFor(model => model.Description)</dd>
+        <dt>@Html.LabelFor(model => model.Tags)</dt><dd>@Html.TextBox("TagsAsString", Model.Tags.ToCommaSeparatedString())</dd>
+    </dl>
+    <input type="submit" value="Save" /> 
+    @Html.ActionLink("Back to List", "Index")
+}

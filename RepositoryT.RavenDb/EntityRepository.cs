@@ -20,50 +20,39 @@ namespace RepositoryT.RavenDb
 
         public virtual bool Add(T entity)
         {
-            bool result;
-
-            try
-            {
-                DataContext.Store(entity);
-                DataContext.SaveChanges();
-                //DataContext.Dispose();
-                result = true;
-            }
-            catch (Exception)
-            {
-                result = false;
-            }
-            return result;
+            DataContext.Store(entity);
+            //DataContext.SaveChanges();
+            return true;
         }
 
         public virtual void Update(T entity)
         {
             DataContext.Store(entity);
-            DataContext.SaveChanges();
+            //DataContext.SaveChanges();
         }
 
         public virtual void Delete(T entity)
         {
             DataContext.Delete(entity);
-            DataContext.SaveChanges();
+            //DataContext.SaveChanges();
         }
         public virtual void Delete(int id)
         {
             Delete(id.ToString(CultureInfo.InvariantCulture));
-            DataContext.SaveChanges();
+            //DataContext.SaveChanges();
         }
 
         public virtual void Delete(string id)
         {
             DataContext.Advanced.DatabaseCommands.Delete(id.ToString(CultureInfo.InvariantCulture), null);
-            DataContext.SaveChanges();
+            //DataContext.SaveChanges();
         }
 
         public virtual void Delete(Expression<Func<T, bool>> @where)
         {
             IRavenQueryable<T> result = DataContext.Query<T>().Where(@where);
             result.ForEach(item => DataContext.Delete(item));
-            DataContext.SaveChanges();
+            //DataContext.SaveChanges();
         }
 
         public virtual T GetById(long id)

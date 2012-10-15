@@ -7,7 +7,7 @@ namespace RepositoryT.RavenDb.MvcSample.SampleBase
 {
     public interface IServiceBase<T> where T : class ,new()
     {
-        bool Add(T entity);
+        void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         void Delete(string id);

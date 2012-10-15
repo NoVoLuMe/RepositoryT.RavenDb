@@ -33,7 +33,6 @@ namespace RepositoryT.RavenDb.MvcSample
             RegisterRoutes(RouteTable.Routes);
 
             ModelBinders.Binders.Add(typeof(Bookmark), new BookmarkModelBinder());
-            //DataDocumentStore.Initialize();
             RavenSessionFactory.Init();
         }
     }

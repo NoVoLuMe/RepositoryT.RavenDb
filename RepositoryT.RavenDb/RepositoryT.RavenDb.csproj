@@ -38,9 +38,9 @@
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\packages\RavenDB.Client.1.0.972\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
-    <Reference Include="RepositoryT, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RepositoryT, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RepositoryT.0.1.0\lib\RepositoryT.dll</HintPath>
+      <HintPath>..\packages\RepositoryT.0.2.0\lib\RepositoryT.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="EntityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelfCommittedEntityRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

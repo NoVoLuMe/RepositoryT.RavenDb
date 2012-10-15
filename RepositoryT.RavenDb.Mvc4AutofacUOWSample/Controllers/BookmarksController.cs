@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using RepositoryT.RavenDb.Mvc4AutofacSample.Models;
-using RepositoryT.RavenDb.Mvc4AutofacSample.SampleBase;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.Models;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase;
 
-namespace RepositoryT.RavenDb.Mvc4AutofacSample.Controllers
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.Controllers
 {
     public class BookmarksController : Controller
     {

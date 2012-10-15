@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace RepositoryT.RavenDb.Mvc4AutofacSample.Models
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.Models
 {
     public class BookmarkModelBinder : DefaultModelBinder
     {

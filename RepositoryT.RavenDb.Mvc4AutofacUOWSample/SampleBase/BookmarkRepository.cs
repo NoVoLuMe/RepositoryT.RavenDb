@@ -1,10 +1,10 @@
 using Raven.Client;
 using RepositoryT.Infrastructure;
-using RepositoryT.RavenDb.Mvc4AutofacSample.Models;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.Models;
 
-namespace RepositoryT.RavenDb.Mvc4AutofacSample.SampleBase
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
 {
-    public class BookmarkRepository : SelfCommittedEntityRepository<Bookmark>, IBookmarkRepository
+    public class BookmarkRepository : EntityRepository<Bookmark>, IBookmarkRepository
     {
         public BookmarkRepository(IDataContextFactory<IDocumentSession> dataContextFactory)
             : base(dataContextFactory)

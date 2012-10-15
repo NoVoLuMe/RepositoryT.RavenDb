@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace RepositoryT.RavenDb.Mvc4AutofacSample.SampleBase
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
 {
     public interface IServiceBase<T> where T : class ,new()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Caching;
 
-namespace RepositoryT.RavenDb.MvcSample.SampleBase
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
 {
     public class CacheManager
     {
@@ -13,8 +13,10 @@ namespace RepositoryT.RavenDb.MvcSample.SampleBase
 
         public CacheManager(TimeSpan duration)
         {
+
             Keys = new List<string>();
             CacheDuration = duration;
+
         }
 
         public T GetAndCheck<T>(string key, Func<T> getItem)

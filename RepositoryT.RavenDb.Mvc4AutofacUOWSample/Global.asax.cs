@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using RepositoryT.RavenDb.Mvc4AutofacSample.App_Start;
-using RepositoryT.RavenDb.Mvc4AutofacSample.Models;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.App_Start;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.Models;
 
-namespace RepositoryT.RavenDb.Mvc4AutofacSample
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801

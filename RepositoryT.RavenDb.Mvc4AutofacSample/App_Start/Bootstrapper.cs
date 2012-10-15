@@ -10,7 +10,7 @@ using RepositoryT.RavenDb.Mvc4AutofacSample.SampleBase;
 
 namespace RepositoryT.RavenDb.Mvc4AutofacSample.App_Start
 {
-    public class Bootsrapper
+    public class Bootstrapper
     {
         public static void Initialize()
         {

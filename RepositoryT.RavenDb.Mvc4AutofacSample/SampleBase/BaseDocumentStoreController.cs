@@ -18,7 +18,11 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.SampleBase
         {
             if (filterContext.IsChildAction)
                 return;
-            DependencyResolver.Current.GetService<IDocumentSession>().SaveChanges();
+            IDocumentSession documentSession = DependencyResolver.Current.GetService<IDocumentSession>();
+            if(documentSession!=null)
+            {
+                documentSession.SaveChanges();
+            }
             base.OnActionExecuted(filterContext);
         }
     }

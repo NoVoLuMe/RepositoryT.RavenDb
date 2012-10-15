@@ -15,6 +15,8 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.App_Start
         public static void Initialize()
         {
             var builder = new ContainerBuilder();
+
+            // Register IDocumentStore as Singleton 
             builder.Register<IDocumentStore>(x => new EmbeddableDocumentStore
                 {
                     ConnectionStringName = ConfigurationManager.AppSettings["RavenConnStr"]
@@ -23,11 +25,11 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.App_Start
                     Conventions = { IdentityPartsSeparator = "-" }
                 }.Initialize()).SingleInstance();
 
-            // Register ISessionFactory as Singleton 
+            // Register IDataContextFactory as InstancePerHttpRequest 
             builder.Register<IDataContextFactory<IDocumentSession>>(x =>
                 new RavenSessionFactory(x.Resolve<IDocumentStore>()))
                 .InstancePerHttpRequest();
-            ////Register IDocumentSession as instance per web request
+            //Register IDocumentSession as InstancePerHttpRequest
             //builder.Register(x => x.Resolve<IDataContextFactory<IDocumentSession>>().GetContext()).InstancePerHttpRequest();
 
             builder.Register<IBookmarkRepository>(x => new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));

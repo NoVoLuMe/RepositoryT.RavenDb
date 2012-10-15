@@ -91,6 +91,11 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.SampleBase
             return _repository.GetById(id);
         }
 
+        public Bookmark Get(Expression<Func<Bookmark, bool>> @where)
+        {
+            return _repository.Get(@where);
+        }
+
         public IEnumerable<Bookmark> GetAll()
         {
             return BookmarkCache;

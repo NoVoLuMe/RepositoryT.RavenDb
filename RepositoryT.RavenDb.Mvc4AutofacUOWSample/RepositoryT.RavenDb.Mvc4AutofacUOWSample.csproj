@@ -200,11 +200,12 @@
     <Compile Include="Models\BookmarksByTagViewModel.cs" />
     <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleBase\BookmarkRepository.cs" />
-    <Compile Include="SampleBase\BookmarkService.cs" />
+    <Compile Include="SampleBase\Repository\Impl\BookmarkRepository.cs" />
+    <Compile Include="SampleBase\Service\Impl\BookmarkService.cs" />
     <Compile Include="SampleBase\CacheManager.cs" />
-    <Compile Include="SampleBase\IBookmarkRepository.cs" />
-    <Compile Include="SampleBase\IBookmarkService.cs" />
+    <Compile Include="SampleBase\EntityService.cs" />
+    <Compile Include="SampleBase\Repository\IBookmarkRepository.cs" />
+    <Compile Include="SampleBase\Service\IBookmarkService.cs" />
     <Compile Include="SampleBase\IServiceBase.cs" />
     <Compile Include="SampleBase\RavenSessionFactory.cs" />
   </ItemGroup>

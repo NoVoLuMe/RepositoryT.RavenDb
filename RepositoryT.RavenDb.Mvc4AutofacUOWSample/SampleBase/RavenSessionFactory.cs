@@ -5,12 +5,13 @@ namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
 {
     public class RavenSessionFactory : IDataContextFactory<IDocumentSession>
     {
+        private readonly IDocumentStore _store;
+        private IDocumentSession _currentSession;
+
         public RavenSessionFactory(IDocumentStore store)
         {
             _store = store;
         }
-        private readonly IDocumentStore _store;
-        private IDocumentSession _currentSession;
 
         public IDocumentSession GetContext()
         {

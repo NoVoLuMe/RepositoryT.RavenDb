@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using RepositoryT.RavenDb.Mvc4AutofacUOWSample.Models;
-using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Service;
 
 namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.Controllers
 {

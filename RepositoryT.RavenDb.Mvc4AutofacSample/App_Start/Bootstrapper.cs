@@ -14,29 +14,28 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.App_Start
     {
         public static void Initialize()
         {
+            InitAutofacDIResolver();
+        }
+
+        private static void InitAutofacDIResolver()
+        {
             var builder = new ContainerBuilder();
 
-            // Register IDocumentStore as Singleton 
             builder.Register<IDocumentStore>(x => new EmbeddableDocumentStore
                 {
-                    ConnectionStringName = ConfigurationManager.AppSettings["RavenConnStr"]
-                        //,UseEmbeddedHttpServer = true
-                ,
-                    Conventions = { IdentityPartsSeparator = "-" }
+                    ConnectionStringName = ConfigurationManager.AppSettings["RavenConnStr"],
+                    Conventions = {IdentityPartsSeparator = "-"}
                 }.Initialize()).SingleInstance();
 
-            // Register IDataContextFactory as InstancePerHttpRequest 
             builder.Register<IDataContextFactory<IDocumentSession>>(x =>
-                new RavenSessionFactory(x.Resolve<IDocumentStore>()))
+                                                                    new RavenSessionFactory(x.Resolve<IDocumentStore>()))
                 .InstancePerHttpRequest();
-            //Register IDocumentSession as InstancePerHttpRequest
-            //builder.Register(x => x.Resolve<IDataContextFactory<IDocumentSession>>().GetContext()).InstancePerHttpRequest();
 
-            builder.Register<IBookmarkRepository>(x => new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));
+            builder.Register<IBookmarkRepository>(
+                x => new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));
             builder.Register<IBookmarkService>(x => new BookmarkService(x.Resolve<IBookmarkRepository>()));
 
-            //Register all controllers
-            builder.RegisterAssemblyTypes(typeof(BookmarksController).Assembly)
+            builder.RegisterAssemblyTypes(typeof (BookmarksController).Assembly)
                 .InNamespaceOf<BookmarksController>()
                 .AsSelf();
 

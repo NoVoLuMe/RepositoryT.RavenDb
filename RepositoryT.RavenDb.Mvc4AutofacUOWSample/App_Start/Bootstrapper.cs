@@ -7,6 +7,10 @@ using Raven.Client.Embedded;
 using RepositoryT.Infrastructure;
 using RepositoryT.RavenDb.Mvc4AutofacUOWSample.Controllers;
 using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Repository;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Repository.Impl;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Service;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Service.Impl;
 
 namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.App_Start
 {
@@ -14,29 +18,30 @@ namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.App_Start
     {
         public static void Initialize()
         {
+            InitAutofacDIResolver();
+        }
+
+        private static void InitAutofacDIResolver()
+        {
             var builder = new ContainerBuilder();
 
-            // Register IDocumentStore as Singleton 
             builder.Register<IDocumentStore>(x => new EmbeddableDocumentStore
-                {
-                    ConnectionStringName = ConfigurationManager.AppSettings["RavenConnStr"]
-                        //,UseEmbeddedHttpServer = true
-                ,
-                    Conventions = { IdentityPartsSeparator = "-" }
-                }.Initialize()).SingleInstance();
+            {
+                ConnectionStringName = ConfigurationManager.AppSettings["RavenConnStr"],
+                Conventions = { IdentityPartsSeparator = "-" }
+            }.Initialize()).SingleInstance();
 
-            // Register IDataContextFactory as InstancePerHttpRequest 
             builder.Register<IDataContextFactory<IDocumentSession>>(x =>
                 new RavenSessionFactory(x.Resolve<IDocumentStore>()))
                 .InstancePerHttpRequest();
-            //Register IDocumentSession as InstancePerHttpRequest
-            //builder.Register(x => x.Resolve<IDataContextFactory<IDocumentSession>>().GetContext()).InstancePerHttpRequest();
 
-            builder.Register<IBookmarkRepository>(x => new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));
-            builder.Register<IUnitOfWork>(x => new RavenDb.UnitOfWork(x.Resolve<IDataContextFactory<IDocumentSession>>()));
-            builder.Register<IBookmarkService>(x => new BookmarkService(x.Resolve<IBookmarkRepository>(), x.Resolve<IUnitOfWork>()));
+            builder.Register<IBookmarkRepository>(x =>
+                new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));
 
-            //Register all controllers
+            builder.Register<IUnitOfWork>(x => new UnitOfWork(x.Resolve<IDataContextFactory<IDocumentSession>>()));
+            builder.Register<IBookmarkService>(x =>
+                new BookmarkService(x.Resolve<IBookmarkRepository>(), x.Resolve<IUnitOfWork>()));
+
             builder.RegisterAssemblyTypes(typeof(BookmarksController).Assembly)
                 .InNamespaceOf<BookmarksController>()
                 .AsSelf();

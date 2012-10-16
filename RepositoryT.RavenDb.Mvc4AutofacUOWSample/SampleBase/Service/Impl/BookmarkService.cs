@@ -6,14 +6,13 @@ using System.Web;
 using System.Web.Caching;
 using RepositoryT.Infrastructure;
 using RepositoryT.RavenDb.Mvc4AutofacUOWSample.Models;
+using RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Repository;
 
-namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
+namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase.Service.Impl
 {
-    public class BookmarkService : IBookmarkService
+    public class BookmarkService : EntityService<Bookmark, IBookmarkRepository>, IBookmarkService
     {
         private const string CACHE_KEY = "Bookmark_Entitites";
-        private readonly IBookmarkRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
 
         private List<Bookmark> BookmarkCache
         {
@@ -21,48 +20,47 @@ namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
         }
 
         public BookmarkService(IBookmarkRepository repository, IUnitOfWork unitOfWork)
+            : base(repository, unitOfWork)
         {
-            _repository = repository;
-            _unitOfWork = unitOfWork;
             if (HttpContext.Current.Cache[CACHE_KEY] == null)
-                CacheInit(Enumerable.ToList<Bookmark>(_repository.GetAll()));
+                CacheInit(Repository.GetAll().ToList());
         }
 
-       public void Add(Bookmark entity)
+        public override void Add(Bookmark entity)
         {
-            _repository.Add(entity);
+            Repository.Add(entity);
 
             if (!string.IsNullOrEmpty(entity.Id))
             {
                 AddToCache(entity);
             }
 
-            _unitOfWork.Commit();
+            UnitOfWork.Commit();
         }
 
-        public void Add(IEnumerable<Bookmark> entities)
+        public override void Add(IEnumerable<Bookmark> entities)
         {
-            _repository.Add(entities);
-            _unitOfWork.Commit();
+            Repository.Add(entities);
+            UnitOfWork.Commit();
             AddToCache(entities);
         }
 
-        public void Update(Bookmark entity)
+        public override void Update(Bookmark entity)
         {
-            _repository.Update(entity);
-            _unitOfWork.Commit();
+            Repository.Update(entity);
+            UnitOfWork.Commit();
         }
 
-        public void Delete(Bookmark entity)
+        public override void Delete(Bookmark entity)
         {
-            _repository.Delete(entity);
-            _unitOfWork.Commit();
+            Repository.Delete(entity);
+            UnitOfWork.Commit();
         }
 
-        public void Delete(string id)
+        public override void Delete(string id)
         {
-            _repository.Delete(id);
-            _unitOfWork.Commit();
+            Repository.Delete(id);
+            UnitOfWork.Commit();
             DeleteFromCache(id);
         }
 
@@ -78,35 +76,15 @@ namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
             }
         }
 
-        public void Delete(Expression<Func<Bookmark, bool>> @where)
+        public override void Delete(Expression<Func<Bookmark, bool>> @where)
         {
-            _repository.Delete(@where);
-            _unitOfWork.Commit();
+            Repository.Delete(@where);
+            UnitOfWork.Commit();
         }
 
-        public Bookmark GetById(long id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public Bookmark GetById(string id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public IEnumerable<Bookmark> GetAll()
+        public override IEnumerable<Bookmark> GetAll()
         {
             return BookmarkCache;
-        }
-
-        public IEnumerable<Bookmark> GetMany(Expression<Func<Bookmark, bool>> @where)
-        {
-            return _repository.GetMany(@where);
-        }
-
-        public IQueryable<Bookmark> IncludeSubSets(params Expression<Func<Bookmark, object>>[] includeProperties)
-        {
-            return _repository.IncludeSubSets(includeProperties);
         }
 
         void AddToCache(Bookmark bookmark)

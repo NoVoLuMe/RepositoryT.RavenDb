@@ -24,7 +24,7 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.App_Start
             builder.Register<IDocumentStore>(x => new EmbeddableDocumentStore
                 {
                     ConnectionStringName = ConfigurationManager.AppSettings["RavenConnStr"],
-                    Conventions = {IdentityPartsSeparator = "-"}
+                    Conventions = { IdentityPartsSeparator = "-" }
                 }.Initialize()).SingleInstance();
 
             builder.Register<IDataContextFactory<IDocumentSession>>(x =>
@@ -33,9 +33,13 @@ namespace RepositoryT.RavenDb.Mvc4AutofacSample.App_Start
 
             builder.Register<IBookmarkRepository>(
                 x => new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));
-            builder.Register<IBookmarkService>(x => new BookmarkService(x.Resolve<IBookmarkRepository>()));
 
-            builder.RegisterAssemblyTypes(typeof (BookmarksController).Assembly)
+            builder.Register<IUnitOfWork>(
+                x => new UnitOfWork(x.Resolve<IDataContextFactory<IDocumentSession>>()));
+            builder.Register<IBookmarkService>(x =>
+                new BookmarkService(x.Resolve<IBookmarkRepository>()));
+
+            builder.RegisterAssemblyTypes(typeof(BookmarksController).Assembly)
                 .InNamespaceOf<BookmarksController>()
                 .AsSelf();
 

@@ -15,6 +15,9 @@ namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.SampleBase
 
         public IDocumentSession GetContext()
         {
+            if (_currentSession != null)
+                return _currentSession;
+
             _currentSession = _store.OpenSession();
             return _currentSession;
         }

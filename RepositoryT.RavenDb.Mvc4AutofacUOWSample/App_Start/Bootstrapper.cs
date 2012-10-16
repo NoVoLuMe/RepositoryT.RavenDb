@@ -37,6 +37,7 @@ namespace RepositoryT.RavenDb.Mvc4AutofacUOWSample.App_Start
 
             builder.Register<IBookmarkRepository>(x =>
                 new BookmarkRepository(x.Resolve<IDataContextFactory<IDocumentSession>>()));
+
             builder.Register<IUnitOfWork>(x => new UnitOfWork(x.Resolve<IDataContextFactory<IDocumentSession>>()));
             builder.Register<IBookmarkService>(x =>
                 new BookmarkService(x.Resolve<IBookmarkRepository>(), x.Resolve<IUnitOfWork>()));
